@@ -93,6 +93,5 @@ $.fn.extend
         if !wrapperOver
           do wrapper.hide
 
-
     @each ->
       _durationPicker(@, settings)
