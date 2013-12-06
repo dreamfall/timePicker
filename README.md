@@ -1,7 +1,7 @@
 durationPicker
 ==============
 
-durationPicker is a simle jQuery plugin, allowing you to create a select with customizable durations
+durationPicker is a simle jQuery plugin, allowing you to create a select with customizable durations.
 
 ## Usage
 
