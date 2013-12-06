@@ -44,7 +44,6 @@ $.fn.extend
       durationsInMinutes = settings.durations.map (duration) ->
         _extractMinutes duration
 
-
       wrapper.append optionsList
       wrapper.appendTo('body').hide();
 
@@ -75,7 +74,7 @@ $.fn.extend
 
         closest = null
 
-        for d in durationInMinutes
+        for d in durationsInMinutes
           if duration < d
             closest = d
             break

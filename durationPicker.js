@@ -80,8 +80,8 @@ $.fn.extend({
         });
         duration = element.value ? _extractMinutes(element.value) : 0;
         closest = null;
-        for (_j = 0, _len1 = durationInMinutes.length; _j < _len1; _j++) {
-          d = durationInMinutes[_j];
+        for (_j = 0, _len1 = durationsInMinutes.length; _j < _len1; _j++) {
+          d = durationsInMinutes[_j];
           if (duration < d) {
             closest = d;
             break;
