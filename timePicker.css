@@ -1,4 +1,4 @@
-div.duration-picker {
+div.time-picker {
   position: absolute;
   height: 191px;
   width:4em; /* needed for IE */
@@ -9,20 +9,20 @@ div.duration-picker {
   margin: 0;
 }
 
-div.duration-picker ul {
+div.time-picker ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-div.duration-picker li {
+div.time-picker li {
   cursor: pointer;
   height: 10px;
   font: 12px/1 Helvetica, Arial, sans-serif;
   padding: 4px 3px;
 }
 
-div.duration-picker li.selected {
+div.time-picker li.selected {
   background: #0063CE;
   color: #fff;
 }

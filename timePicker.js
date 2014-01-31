@@ -7,10 +7,10 @@ var $;
 $ = jQuery;
 
 $.fn.extend({
-  durationPicker: function(options) {
-    var settings, _durationPicker, _extractMinutes, _setValue, _timeToString;
+  timePicker: function(options) {
+    var settings, _extractMinutes, _setValue, _timePicker, _timeToString;
     settings = {
-      durations: ['00:00', '00:15', '00:30', '00:45', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '24:00', '48:00']
+      values: ['00:00', '00:15', '00:30', '00:45', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '24:00', '48:00']
     };
     settings = $.extend(settings, options);
     _setValue = function(input, option, wrapper) {
@@ -40,18 +40,18 @@ $.fn.extend({
       }
       return "" + hoursString + ":" + minutesString;
     };
-    _durationPicker = function(element, settings) {
-      var duration, durationsInMinutes, optionsList, showPicker, wrapper, wrapperOver, _i, _len, _ref;
-      wrapper = $('<div class="duration-picker"></div>');
+    _timePicker = function(element, settings) {
+      var optionsList, showPicker, time, valuesInMinutes, wrapper, wrapperOver, _i, _len, _ref;
+      wrapper = $('<div class="time-picker"></div>');
       wrapperOver = false;
       optionsList = $('<ul></ul>');
-      _ref = settings.durations;
+      _ref = settings.values;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        duration = _ref[_i];
-        optionsList.append("<li>" + duration + "</li>");
+        time = _ref[_i];
+        optionsList.append("<li>" + time + "</li>");
       }
-      durationsInMinutes = settings.durations.map(function(duration) {
-        return _extractMinutes(duration);
+      valuesInMinutes = settings.values.map(function(time) {
+        return _extractMinutes(time);
       });
       wrapper.append(optionsList);
       wrapper.appendTo('body').hide();
@@ -78,16 +78,16 @@ $.fn.extend({
           top: elementOffset.top + element.offsetHeight,
           left: elementOffset.left
         });
-        duration = element.value ? _extractMinutes(element.value) : 0;
+        time = element.value ? _extractMinutes(element.value) : 0;
         closest = null;
-        for (_j = 0, _len1 = durationsInMinutes.length; _j < _len1; _j++) {
-          d = durationsInMinutes[_j];
-          if (duration < d) {
+        for (_j = 0, _len1 = valuesInMinutes.length; _j < _len1; _j++) {
+          d = valuesInMinutes[_j];
+          if (time < d) {
             closest = d;
             break;
           }
         }
-        closestMin = durationsInMinutes[durationsInMinutes.indexOf(closest) - 1];
+        closestMin = valuesInMinutes[valuesInMinutes.indexOf(closest) - 1];
         wrapper.show();
         if (closestMin && (closestOption = $("li:contains(" + (_timeToString(closestMin)) + ")", wrapper)).length) {
           closestOption.addClass('selected');
@@ -102,7 +102,7 @@ $.fn.extend({
       });
     };
     return this.each(function() {
-      return _durationPicker(this, settings);
+      return _timePicker(this, settings);
     });
   }
 });

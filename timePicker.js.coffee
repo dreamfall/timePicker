@@ -1,13 +1,13 @@
-# durationPicker.js
-# https://github.com/dreamfall/durationPicker
+# timePicker.js
+# https://github.com/dreamfall/timePicker
 # version 0.1
 
 $ = jQuery
 
 $.fn.extend
-  durationPicker: (options) ->
+  timePicker: (options) ->
     settings =
-      durations: ['00:00', '00:15', '00:30', '00:45', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '24:00', '48:00']
+      values: ['00:00', '00:15', '00:30', '00:45', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '24:00', '48:00']
 
     settings = $.extend settings, options
 
@@ -33,16 +33,16 @@ $.fn.extend
 
       "#{hoursString}:#{minutesString}"
 
-    _durationPicker = (element, settings) ->
-      wrapper = ($ '<div class="duration-picker"></div>')
+    _timePicker = (element, settings) ->
+      wrapper = ($ '<div class="time-picker"></div>')
       wrapperOver = false
       optionsList = ($ '<ul></ul>')
 
-      for duration in settings.durations
-        optionsList.append("<li>#{duration}</li>")
+      for time in settings.values
+        optionsList.append("<li>#{time}</li>")
 
-      durationsInMinutes = settings.durations.map (duration) ->
-        _extractMinutes duration
+      valuesInMinutes = settings.values.map (time) ->
+        _extractMinutes time
 
       wrapper.append optionsList
       wrapper.appendTo('body').hide();
@@ -70,16 +70,16 @@ $.fn.extend
         elementOffset = ($ element).offset()
         wrapper.css(top: elementOffset.top + element.offsetHeight, left: elementOffset.left)
 
-        duration = if element.value then _extractMinutes(element.value) else 0
+        time = if element.value then _extractMinutes(element.value) else 0
 
         closest = null
 
-        for d in durationsInMinutes
-          if duration < d
+        for d in valuesInMinutes
+          if time < d
             closest = d
             break
 
-        closestMin = durationsInMinutes[durationsInMinutes.indexOf(closest) - 1]
+        closestMin = valuesInMinutes[valuesInMinutes.indexOf(closest) - 1]
 
         do wrapper.show
 
@@ -94,4 +94,4 @@ $.fn.extend
           do wrapper.hide
 
     @each ->
-      _durationPicker(@, settings)
+      _timePicker(@, settings)
