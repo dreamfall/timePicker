@@ -1,5 +1,5 @@
-// durationPicker.js
-// https://github.com/dreamfall/durationPicker
+// timePicker.js
+// https://github.com/dreamfall/timePicker
 // version 0.1
 
 var $;
